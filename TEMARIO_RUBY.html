@@ -1,0 +1,1151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.4" />
+<title>Memoria de curso Ruby, Rails, y HAML</title>
+<style type="text/css">
+/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+/*
+  pygmentize filter
+*/
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f4f4f4; }
+.highlight .c { color: #008800; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #AA22FF; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #008800; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #008800 } /* Comment.Preproc */
+.highlight .c1 { color: #008800; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #008800; font-weight: bold } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #808080 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight .kc { color: #AA22FF; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #AA22FF; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #AA22FF; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #AA22FF } /* Keyword.Pseudo */
+.highlight .kr { color: #AA22FF; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #00BB00; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BB4444 } /* Literal.String */
+.highlight .na { color: #BB4444 } /* Name.Attribute */
+.highlight .nb { color: #AA22FF } /* Name.Builtin */
+.highlight .nc { color: #0000FF } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #00A000 } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #B8860B } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BB4444 } /* Literal.String.Backtick */
+.highlight .sc { color: #BB4444 } /* Literal.String.Char */
+.highlight .sd { color: #BB4444; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BB4444 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BB4444 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BB4444 } /* Literal.String.Single */
+.highlight .ss { color: #B8860B } /* Literal.String.Symbol */
+.highlight .bp { color: #AA22FF } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #B8860B } /* Name.Variable.Class */
+.highlight .vg { color: #B8860B } /* Name.Variable.Global */
+.highlight .vi { color: #B8860B } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes(); asciidoc.toc(2);}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Memoria de curso Ruby, Rails, y HAML</h1>
+<span id="author">Antonio Chávez</span><br />
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introducción">Introducción</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>En este documento encontraras toda la información necesaria para comenzar a trabajar con Ruby 1.9.2, Rails 3.1, y HAML 3.1.3.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_estudiantes">Estudiantes</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Los estudiantes que impartiran este curso son:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Alberto Alcaraz
+</p>
+</li>
+<li>
+<p>
+Antonio Chávez
+</p>
+</li>
+<li>
+<p>
+Jorge Robles
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_ruby">1. Ruby</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_1_introducción_a_la_programación_con_ruby">1.1 Introducción a la programación con Ruby</h3>
+<div class="sect3">
+<h4 id="_a_instalando_ruby">a) Instalando Ruby</h4>
+<div class="paragraph"><p>Ruby viene por defecto instalado en la mayoria de las versiones de los sistemas operativos basados en Linux y en el caso de Mac, viene instalado por defecto pero usualmente es una version mas antigua que la version estable mas reciente.</p></div>
+<div class="sect4">
+<h5 id="_instalando_en_windows">Instalando en windows:</h5>
+<div class="paragraph"><p>Para instalar Ruby 1.9 en windows, puedes descargar el instalador de <a href="http://rubyinstaller.org/">http://rubyinstaller.org/</a>, despues de completar la instalacion podras acceder a la consola de comandos de Ruby en el acceso directo creado en el menu de INICIO:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="img/windows-installer.png" alt="Imagen1" />
+</span></p></div>
+</div>
+<div class="sect4">
+<h5 id="_instalando_en_linux">Instalando en linux:</h5>
+<div class="paragraph"><p>De acuerdo a la distribucion linux que utilizes, el comando para instalar paquetes desde los repositorios puede variar, en este caso nos concentraremos en la version ubuntu debian, pero tambien funciona en otras distribuciones.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Instalando RVM
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>El Ruby Version Manger, mejor conocido como RVM es un paquete que nos permite manejar las versiones de Ruby dentro de nuestro entorno Linux-Unix-Mac, Para instalarlo necesitamos introducir los siguientes comandos en la consola linux:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>$ sudo apt-get update
+$ sudo apt-get install curl</tt></pre>
+</div></div>
+<div class="paragraph"><p>Despues pasamos a instalar la version mas reciente de RVM</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>$ bash &lt; &lt;( curl http://rvm.beginrescueend.com/releases/rvm-install-head )</tt></pre>
+</div></div>
+<div class="paragraph"><p>Para dar de alta el comando RVM en el shell de linux, debemos introducir el siguiente comando en el script .bashrc localizado en tu carpeta HOME del sistema:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>$ gedit .bashrc</tt></pre>
+</div></div>
+<div class="paragraph"><p>E introducimos el comando en la ultima linea del script:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*</tt></pre>
+</div></div>
+<div class="paragraph"><p>Una vez configurado el RVM pasamos a instalar la version 1.9.2 de Ruby con el siguiente comando:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>$ rvm install 1.9.2</tt></pre>
+</div></div>
+<div class="paragraph"><p>Automaticamente te reconocera el sistema operativo y si es de 32 o 64 bits, descargara y compilara la version 1.9.2 de Ruby, una vez terminado el proceso establecemos como default la version 1.9.2:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>$ rvm --default 1.9.2</tt></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>thenaox@thenaox-Satellite-L455:~$ ruby -v
+ruby 1.9.2p290 (2011-07-09 revision 32553) [x86_64-linux]</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_b_historia_de_ruby">b) Historia de Ruby</h4>
+<div class="paragraph"><p>Ruby es un lenguaje de programacion interpretado, reflexivo y orientado a objetos. Creado por el japones "Yukihiro Matsumoto", es un lenguaje de programacion orientado a objetos.</p></div>
+<div class="paragraph"><p>El lenguaje fue creado por Yukihiro "Matz" Matsumoto, quien empezó a trabajar en Ruby el 24 de febrero de 1993, y lo presentó al público en el año 1995. En el círculo de amigos de Matsumoto se le puso el nombre de "Ruby" (en español rubí) como broma aludiendo al lenguaje de programación "Perl" (perla).</p></div>
+<div class="paragraph"><p>El creador del lenguaje, Yukihiro "Matz" Matsumoto, ha dicho que Ruby está diseñado para la productividad y la diversión del desarrollador, siguiendo los principios de una buena interfaz de usuario. Sostiene que el diseño de sistemas necesita enfatizar las necesidades humanas más que las de la máquina:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>A menudo la gente, especialmente los ingenieros en computación, se centran en las máquinas. Ellos piensan, "Haciendo esto, la máquina funcionará más rápido. Haciendo esto, la máquina funcionará de manera más eficiente. Haciendo esto..." Están centrados en las máquinas, pero en realidad necesitamos centrarnos en las personas, en cómo hacen programas o cómo manejan las aplicaciones en los ordenadores. Nosotros somos los jefes. Ellos son los esclavos.</tt></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_c_conceptos_básicos">c) Conceptos básicos</h4>
+<div class="sect4">
+<h5 id="_viendo_todo_como_un_objeto">Viendo todo como un objeto</h5>
+<div class="paragraph"><p>Inicialmente, Matz buscó en otros lenguajes para encontrar la sintaxis ideal. Recordando su búsqueda, dijo, “quería un lenguaje que fuera más poderoso que Perl, y más orientado a objetos que Python3”.</p></div>
+<div class="paragraph"><p>En Ruby, todo es un objeto. Se le puede asignar propiedades y acciones a toda información y código. La programación orientada a objetos llama a las propiedades variables de instancia y las acciones son conocidas como métodos. La orientación a objetos pura de Ruby se suele demostrar con un simple código que aplica una acción a un número.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>5.times { print "Nos *encanta* Ruby -- ¡es fuera de serie!" }</tt></pre>
+</div></div>
+<div class="paragraph"><p>En muchos lenguajes, los números y otros tipos primitivos no son objetos. Ruby sigue la influencia del lenguaje Smalltalk pudiendo poner métodos y variables de instancia a todos sus tipos de datos. Esto facilita el uso de Ruby, porque las reglas que se aplican a los objetos son aplicables a todo Ruby.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_la_flexibilidad_de_ruby">La flexibilidad de Ruby</h5>
+<div class="paragraph"><p>Ruby es considerado un lenguaje flexible, ya que permite a sus usuarios alterarlo libremente. Las partes esenciales de Ruby pueden ser quitadas o redefinidas a placer. Se puede agregar funcionalidad a partes ya existentes. Ruby intenta no restringir al desarrollador.</p></div>
+<div class="paragraph"><p>Por ejemplo, la suma se realiza con el operador suma (+). Pero si prefieres usar la palabra sumar, puedes agregar un método llamado sumar a la clase Numeric que viene incorporada.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>class Numeric
+  def sumar(x)
+    self.+(x)
+  end
+end</tt></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>y = 5.sumar 6
+# ahora y vale 11</tt></pre>
+</div></div>
+<div class="paragraph"><p>Los operadores de Ruby son simples conveniencias sintácticas para los métodos. Los puedes redefinir como y cuando quieras.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_más_allá_de_lo_básico">Más allá de lo básico</h5>
+<div class="paragraph"><p>Ruby tiene un conjunto de otras funcionalidades entre las que se encuentran las siguientes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Manejo de excepciones, como Java y Python, para facilitar el manejo de errores.
+</p>
+</li>
+<li>
+<p>
+Un verdadero mark-and-sweep garbage collector para todos los objetos de Ruby. No es necesario mantener contadores de referencias en bibliotecas externas. Como dice Matz, “Esto es mejor para tu salud”.
+</p>
+</li>
+<li>
+<p>
+Escribir extenciones en C para Ruby es más fácil que hacer lo mismo para Perl o Python, con una API muy elegante para utilizar Ruby desde C. Esto incluye llamadas para embeber Ruby en otros programas, y así usarlo como lenguaje de scripting. También está disponible una interfaz SWIG.
+puede cargar bibliotecas de extensión dinámicamente si lo permite el sistema operativo.
+</p>
+</li>
+<li>
+<p>
+Tiene manejo de hilos (threading) independiente del sistema operativo. De esta forma, tienes soporte multi-hilo en todas las plataformas en las que corre Ruby, sin importar si el sistema operativo lo soporta o no, ¡incluso en MS-DOS!
+</p>
+</li>
+<li>
+<p>
+Ruby es fácilmente portable: se desarrolla mayoritariamente en GNU/Linux, pero corre en varios tipos de UNIX, Mac OS X, Windows 95/98/Me/NT/2000/XP, DOS, BeOS, OS/2, etc.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_2_tipos_estándar_de_datos">1.2 Tipos estándar de datos</h3>
+<div class="paragraph"><p>Ruby maneja los tipos estandar de datos de cualquier lenguaje de programacion, Numeros, Strings, y Rangos</p></div>
+<div class="sect3">
+<h4 id="_a_números">a) Números</h4>
+<div class="paragraph"><p>Ruby soporta enteros, flotantes, racionales y numeros complejos. Los enteros pueden ser de cualquier tamaño, tanto como tengas de memoria RAM disponible en tu computadora. Los enteros de un rango maximo de 2^ 62-1 en su forma binaria son objetos de la clase <em>FIXNUM</em>, y los enteros fuera de este rango son de la clase <em>BIGNUM</em>. Este proceso es transparente y Ruby automaticamente gestiona la conversion internamente:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt> ruby-1.9.2-p290 :001 &gt; fxnum = 1111111
+ ruby-1.9.2-p290 :002 &gt; fxnum.class
+ =&gt; Fixnum
+ ruby-1.9.2-p290 :003 &gt; bgnum = 111111111111111111111111111111111111111111111111111111
+ ruby-1.9.2-p290 :004 &gt; bgnum.class
+=&gt; Bignum</tt></pre>
+</div></div>
+<div class="paragraph"><p>Un numero entero con un punto decimal, automaticamente ruby lo convierte a un objeto <em>FLOAT</em> correspondiente a la arquitectura nativa de los objetos del tipo DOUBLE.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>ruby-1.9.2-p290 :001 &gt; flnum = 1.25;
+ruby-1.9.2-p290 :002 &gt; flnum.class
+=&gt; Float</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ruby no cuenta con una literal para representar los numeros racionales y complejos, pero puedes crearlos de forma que tu puedes trabajar con ellos:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>ruby-1.9.2-p290 :003 &gt; Rational(3,4)*Rational(3,4)
+ =&gt; (9/16)
+ruby-1.9.2-p290 :004 &gt; Complex(3,4)*Complex(3,4)
+ =&gt; (-7+24i)</tt></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_b_strings">b) Strings</h4>
+<div class="paragraph"><p>En ruby, las cadenas son secuencias de caracteres como en cualquier otro lenguaje de programacion, y se delimitan por la comilla doble ":</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>puts "Esta es una cadena de Ruby"
+Esta es una cadena de Ruby
+=&gt;nil</tt></pre>
+</div></div>
+<div class="paragraph"><p>Puedes insertar codigo dentro de una cadena como una suma, o una instruccion entera si quieres, pero necesitas como referencia la sintaxis #{}:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>ruby-1.9.2-p290 :007 &gt; puts "hoy es #{Time.now}"
+ hoy es 2011-11-13 18:48:23 -0600
+  =&gt; nil
+ ruby-1.9.2-p290 :008 &gt; puts "la suma de las 2 + 3 es #{2+3}"
+ la suma de las 2 + 3 es 5
+  =&gt; nil</tt></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_c_rangos">c) Rangos</h4>
+<div class="paragraph"><p>Los rangos son tipos de datos que nos permiten determinar una secuencia de numeros, desde el 1 hasta el 9 o de enero a diciembre, de forma natural:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>ruby-1.9.2-p290 :010 &gt; rnum = 1..10
+ =&gt; 1..10
+ruby-1.9.2-p290 :012 &gt; rnum.to_a
+ =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</tt></pre>
+</div></div>
+<div class="paragraph"><p>Los rangos tienen metodos que te permiten obtener lo que necesitas de ellos en distintas formas:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>ruby-1.9.2-p290 :013 &gt; digito = 1..9;
+ruby-1.9.2-p290 :014 &gt; digito.include?(5)
+ =&gt; true
+ruby-1.9.2-p290 :015 &gt; digito.min
+ =&gt; 1
+ruby-1.9.2-p290 :016 &gt; digito.max
+ =&gt; 9
+ruby-1.9.2-p290 :017 &gt; digito.reject {|i| i &lt; 5}
+ =&gt; [5, 6, 7, 8, 9]
+ruby-1.9.2-p290 :018 &gt; digito.inject(:+)
+ =&gt; 45</tt></pre>
+</div></div>
+<div class="paragraph"><p>Puedes utilizar los rangos como condiciones dentro de un case o en un if:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>while line =  gets
+  puts line if line =~ /start/ .. line =~ /end/
+end</tt></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>car_age = gets.to_f
+case car_age
+when 0...1
+  puts "Mmm... New car smell"
+when 1..3
+  puts "Nice car and new"</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_3_estructuras_de_control">1.3 Estructuras de control</h3>
+<div class="sect3">
+<h4 id="_a_if_else">a) If, else</h4>
+<div class="paragraph"><p>Una expresion IF en Ruby es bastante similar a cualquier otro lenguaje:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>if today == "monday" then
+  puts "I hate mondays, I'm garfield..."
+elsif today == "tuesday" then
+  puts  "I want some lasagna because today is not monday"
+else
+  puts "Zzzz..."
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>De otra forma tambien se puede expresar una condicion <em>if</em> utilizando <em>unless</em>:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>if today == "Monday" then
+  puts "I hate mondays,  I'm garfield"
+end</tt></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>unless today == "Monday"
+  puts "I love weekdays"
+end</tt></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_b_for_in">b) For, in</h4>
+<div class="paragraph"><p>La sentencia <em>for</em> existe en ruby tal como:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>numeros = 1..9
+for i in numeros
+  print i, " "
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>E internamente Ruby la traduce de esta manera:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>numeros.each do |i|
+  print i, " "
+end</tt></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_c_while">c) While</h4>
+<div class="paragraph"><p>El ciclo <em>while</em> ejecuta el las instrucciones internas cero o mas veces mientras la condicion sea cierta. Por ejemplo:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>while line = gets
+  # ...
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>El ciclo <em>until</em> es lo contrario, ejecuta las instrucciones hasta que la condicion cambie a verdadera:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>until line = gets
+  # ...
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>Los ciclos <em>while</em> y <em>until</em> no integran el nuevo ambito de hacer iteraciones integrado en Ruby.</p></div>
+<div class="paragraph"><p>Las reglas de ambito para los bloques delimitados por los ciclos son diferentes, las variables definidas para trabajar dentro del ciclo no son accesibles despues de que la ejecucion iterativa del codigo halla sido terminada. Por ejemplo:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>ruby-1.9.2-p290 :001 &gt; [1,2,3].each do |x|
+ruby-1.9.2-p290 :002 &gt;     y = x + 1
+ruby-1.9.2-p290 :003?&gt;   end
+ =&gt; [1, 2, 3]
+ruby-1.9.2-p290 :004 &gt; [x,y]
+NameError: undefined local variable or method `x' for main:Object
+      from (irb):4
+      from /home/thenaox/.rvm/rubies/ruby-1.9.2-p290/bin/irb:16:in `&lt;main&gt;'</tt></pre>
+</div></div>
+<div class="paragraph"><p>Este ciclo cambiaria si lo acomodamos de esta forma:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>ruby-1.9.2-p290 :006 &gt; x = "Valor inicial";
+ruby-1.9.2-p290 :007 &gt;   y = "Otro valor";
+ruby-1.9.2-p290 :008 &gt;   [1,2,3].each do |x|
+ruby-1.9.2-p290 :009 &gt;     y = x + 1
+ruby-1.9.2-p290 :010?&gt;   end
+ =&gt; [1, 2, 3]
+ruby-1.9.2-p290 :011 &gt; [x,y]
+ =&gt; ["Valor inicial", 4]</tt></pre>
+</div></div>
+<div class="paragraph"><p>Y la variable "x" definida en el ciclo, no se ve afectada por lo que ocurre en su interior, como resultado obtenemos el valor de x inicial intacto, y la variable y modificada por las operaciones del ciclo.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_d_loop">d) Loop</h4>
+<div class="paragraph"><p>Como ultimo, Ruby proporciona un iterador muy basico y simple llamado <em>loop</em>:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>loop do
+  #block
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>El iterador <em>loop</em> es un ciclo que se ejecuta infinitamente hasta que tu como usuario del programa lo terminas manualmente.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>server = TCPServer.open(2000) #Socket listen on port 2000
+loop{                         #Servers run forever
+  client = server.accept      #Wait for a client to connect
+  client.puts(Time.now.ctime) #Send the time to the client
+  puts "Client connected at #{Time.now} from #{client.addr} , sending request ..."
+  client.puts "Closing the connection. Bye!"
+  client.close                #Disconnect from the client
+}</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_4_clases_y_objetos">1.4 Clases y objetos</h3>
+<div class="sect3">
+<h4 id="_a_objetos_y_atributos">a) Objetos y atributos</h4>
+</div>
+<div class="sect3">
+<h4 id="_b_clases_y_su_comunicación_con_otras_clases">b) Clases y su comunicación con otras clases</h4>
+</div>
+<div class="sect3">
+<h4 id="_c_control_de_acceso">c) Control de acceso</h4>
+</div>
+<div class="sect3">
+<h4 id="_d_variables">d) Variables</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_5_bloques">1.5 Bloques</h3>
+<div class="sect3">
+<h4 id="_a_arrays">a) Arrays</h4>
+</div>
+<div class="sect3">
+<h4 id="_b_hashes">b) Hashes</h4>
+</div>
+<div class="sect3">
+<h4 id="_c_bloques_e_iteradores">c) Bloques e iteradores</h4>
+</div>
+<div class="sect3">
+<h4 id="_d_contenedores">d) Contenedores</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_rails">2 Rails</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_1_qué_es_ruby_on_rails">2.1 ¿Qué es Ruby on Rails?</h3>
+<div class="sect3">
+<h4 id="_a">a)</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_preparandonos_para_empezar">2.2 Preparandonos para empezar</h3>
+<div class="sect3">
+<h4 id="_a_2">a)</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_3_conociendo_el_mundo_de_rails">2.3 Conociendo el mundo de Rails</h3>
+<div class="sect3">
+<h4 id="_a_3">a)</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_4_bases_de_datos_modelos_y_sus_relaciones">2.4 Bases de datos, modelos y sus relaciones</h3>
+<div class="sect3">
+<h4 id="_a_4">a)</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_5_una_simple_vista_de_rails">2.5 Una simple vista de Rails</h3>
+<div class="sect3">
+<h4 id="_a_5">a)</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_6_como_controlo_lo_que_hace">2.6 Como controlo lo que hace</h3>
+<div class="sect3">
+<h4 id="_a_6">a)</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_7_y_tanto_para_esto">2.7 ¿Y tanto para esto?</h3>
+<div class="sect3">
+<h4 id="_a_7">a)</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_haml_simplificando_html_y_css">3 HAML, simplificando HTML y CSS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_3_1_introducción_a_html">3.1 Introducción a HTML</h3>
+<div class="sect3">
+<h4 id="_a_breve_historia">a) Breve historia</h4>
+</div>
+<div class="sect3">
+<h4 id="_b_marcado_de_elementos_y_atributos">b) Marcado de elementos y atributos</h4>
+</div>
+<div class="sect3">
+<h4 id="_c_nociones_básicas">c) Nociones básicas</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_2_código_básico_en_html">3.2 Código básico en HTML</h3>
+</div>
+<div class="sect2">
+<h3 id="_3_3_css_hojas_de_estilo">3.3 CSS (Hojas de estilo)</h3>
+<div class="sect3">
+<h4 id="_a_implementación_dentro_del_código_html">a) Implementación dentro del código HTML</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_4_creación_de_paginas_web_con_html_y_css">3.4 Creación de paginas web con HTML y CSS</h3>
+<div class="paragraph"><p>Aqui va la documentación del 3.4</p></div>
+</div>
+<div class="sect2">
+<h3 id="_3_5_introducción_a_haml">3.5 Introducción a HAML</h3>
+<div class="sect3">
+<h4 id="_a_breve_historia_2">a) Breve historia</h4>
+</div>
+<div class="sect3">
+<h4 id="_b_uso_y_aplicación">b) Uso y aplicación</h4>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_6_programación_con_haml">3.6 Programación con HAML</h3>
+<div class="paragraph"><p>Aqui va la documentación del 3.6</p></div>
+</div>
+<div class="sect2">
+<h3 id="_3_7_html_vs_haml">3.7 HTML vs HAML</h3>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2011-11-13 20:44:38 CST
+</div>
+</div>
+</body>
+</html>
