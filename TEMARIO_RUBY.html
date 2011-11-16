@@ -738,10 +738,7 @@ ruby 1.9.2p290 (2011-07-09 revision 32553) [x86_64-linux]</tt></pre>
 <div class="paragraph"><p>Ruby es un lenguaje de programacion interpretado, reflexivo y orientado a objetos. Creado por el japones "Yukihiro Matsumoto", es un lenguaje de programacion orientado a objetos.</p></div>
 <div class="paragraph"><p>El lenguaje fue creado por Yukihiro "Matz" Matsumoto, quien empezó a trabajar en Ruby el 24 de febrero de 1993, y lo presentó al público en el año 1995. En el círculo de amigos de Matsumoto se le puso el nombre de "Ruby" (en español rubí) como broma aludiendo al lenguaje de programación "Perl" (perla).</p></div>
 <div class="paragraph"><p>El creador del lenguaje, Yukihiro "Matz" Matsumoto, ha dicho que Ruby está diseñado para la productividad y la diversión del desarrollador, siguiendo los principios de una buena interfaz de usuario. Sostiene que el diseño de sistemas necesita enfatizar las necesidades humanas más que las de la máquina:</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><tt>A menudo la gente, especialmente los ingenieros en computación, se centran en las máquinas. Ellos piensan, "Haciendo esto, la máquina funcionará más rápido. Haciendo esto, la máquina funcionará de manera más eficiente. Haciendo esto..." Están centrados en las máquinas, pero en realidad necesitamos centrarnos en las personas, en cómo hacen programas o cómo manejan las aplicaciones en los ordenadores. Nosotros somos los jefes. Ellos son los esclavos.</tt></pre>
-</div></div>
+<div class="paragraph"><p>A menudo la gente, especialmente los ingenieros en computación, se centran en las máquinas. Ellos piensan, "Haciendo esto, la máquina funcionará más rápido. Haciendo esto, la máquina funcionará de manera más eficiente. Haciendo esto&#8230;" Están centrados en las máquinas, pero en realidad necesitamos centrarnos en las personas, en cómo hacen programas o cómo manejan las aplicaciones en los ordenadores. Nosotros somos los jefes. Ellos son los esclavos.</p></div>
 </div>
 <div class="sect3">
 <h4 id="_c_conceptos_básicos">c) Conceptos básicos</h4>
@@ -1017,6 +1014,62 @@ loop{                         #Servers run forever
 </div>
 <div class="sect2">
 <h3 id="_1_4_clases_y_objetos">1.4 Clases y objetos</h3>
+<div class="paragraph"><p>Todo lo que manipulamos con ruby es un objeto, y todo objeto fue generado directa o indirectamente desde una clase. Dentro de esta seccion nos concentraremos en crear clases y manipular los objetos en las distintas formas que tiene Ruby de hacerlo. Ruby es mas poderoso en orientacion a objetos que cualquier otro.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Creando nuestra primer clase en ruby
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Vamos a definir la sintaxis de creacion de clases:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>class NayaritCourse
+  ## Some code in here
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>Para la definicion de una clase es importante que la primer letra del nombre de la clase sea <em>MAYUSCULA</em>, y para las funciones de la clase sean en <em>minuscula</em>, por ejemplo:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>class NayaritCourse
+  def initialize
+    # ...
+  end
+  def my_function
+    # ...
+  end
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>De la misma forma que en otros lenguajes de programacion orientada a objetos, Ruby tambien utiliza un constructor para inicializar los valores que nosotros necesitaremos a lo largo de la ejecucion de las funciones de cada objeto de nuestra clase definido.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>class SteweyToy
+  #Constructor de la clase
+  def initialize(selection)
+    @selection = selection
+  end
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>Al momento de inicializar el constructor de la clase podemos pasarle parametros de inicializacion, en este caso <em>selection</em> es nuestra variable con la que nos comunicamos desde afuera del objeto hacia su interior, y la variable <em>@selection</em> es la variable que recibe el valor y que es accesible por cada uno de los metodos de la clase.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>class SteweyToy
+  def initialize(selection)
+    @selection = selection
+    @Animal = {
+      :monkey   =&gt; 'The monkey says "Makaaaaaak"',
+      :cow      =&gt; 'The cow says "Shazoooooo!"',
+      :pig      =&gt; 'The pig says "Oink!!"',
+      :rooster  =&gt; 'The rooster says "Kikirikiiiii!!!!"'
+    }
+  end
+  def Jam
+    puts @Animal[@selection]
+  end
+end</tt></pre>
+</div></div>
+<div class="paragraph"><p>Las variables precedidas por un <em>@</em> son variables accesibles por toda la clase.</p></div>
 <div class="sect3">
 <h4 id="_a_objetos_y_atributos">a) Objetos y atributos</h4>
 </div>
@@ -1039,7 +1092,7 @@ loop{                         #Servers run forever
 <h4 id="_b_hashes">b) Hashes</h4>
 </div>
 <div class="sect3">
-<h4 id="_c_bloques_e_iteradores">c) Bloques e iteradores</h4>
+<h4 id="_c_bloques">c) Bloques</h4>
 </div>
 <div class="sect3">
 <h4 id="_d_contenedores">d) Contenedores</h4>
@@ -1144,7 +1197,7 @@ loop{                         #Servers run forever
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2011-11-13 20:44:38 CST
+Last updated 2011-11-15 10:42:23 CST
 </div>
 </div>
 </body>

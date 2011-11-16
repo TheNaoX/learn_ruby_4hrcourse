@@ -77,7 +77,7 @@ El lenguaje fue creado por Yukihiro "Matz" Matsumoto, quien empezó a trabajar e
 
 El creador del lenguaje, Yukihiro "Matz" Matsumoto, ha dicho que Ruby está diseñado para la productividad y la diversión del desarrollador, siguiendo los principios de una buena interfaz de usuario. Sostiene que el diseño de sistemas necesita enfatizar las necesidades humanas más que las de la máquina:
 
-  A menudo la gente, especialmente los ingenieros en computación, se centran en las máquinas. Ellos piensan, "Haciendo esto, la máquina funcionará más rápido. Haciendo esto, la máquina funcionará de manera más eficiente. Haciendo esto..." Están centrados en las máquinas, pero en realidad necesitamos centrarnos en las personas, en cómo hacen programas o cómo manejan las aplicaciones en los ordenadores. Nosotros somos los jefes. Ellos son los esclavos.
+A menudo la gente, especialmente los ingenieros en computación, se centran en las máquinas. Ellos piensan, "Haciendo esto, la máquina funcionará más rápido. Haciendo esto, la máquina funcionará de manera más eficiente. Haciendo esto..." Están centrados en las máquinas, pero en realidad necesitamos centrarnos en las personas, en cómo hacen programas o cómo manejan las aplicaciones en los ordenadores. Nosotros somos los jefes. Ellos son los esclavos.
 
 
 ==== c) Conceptos básicos
@@ -309,7 +309,58 @@ El iterador 'loop' es un ciclo que se ejecuta infinitamente hasta que tu como us
 
 === 1.4 Clases y objetos
 
+Todo lo que manipulamos con ruby es un objeto, y todo objeto fue generado directa o indirectamente desde una clase. Dentro de esta seccion nos concentraremos en crear clases y manipular los objetos en las distintas formas que tiene Ruby de hacerlo. Ruby es mas poderoso en orientacion a objetos que cualquier otro.
+
+- Creando nuestra primer clase en ruby
+
+Vamos a definir la sintaxis de creacion de clases:
+
+  class NayaritCourse
+    ## Some code in here
+  end
+
+Para la definicion de una clase es importante que la primer letra del nombre de la clase sea 'MAYUSCULA', y para las funciones de la clase sean en 'minuscula', por ejemplo:
+
+  class NayaritCourse
+    def initialize
+      # ...
+    end
+    def my_function
+      # ...
+    end
+  end
+
+De la misma forma que en otros lenguajes de programacion orientada a objetos, Ruby tambien utiliza un constructor para inicializar los valores que nosotros necesitaremos a lo largo de la ejecucion de las funciones de cada objeto de nuestra clase definido.
+
+  class SteweyToy
+    #Constructor de la clase
+    def initialize(selection)
+      @selection = selection
+    end
+  end
+
+Al momento de inicializar el constructor de la clase podemos pasarle parametros de inicializacion, en este caso 'selection' es nuestra variable con la que nos comunicamos desde afuera del objeto hacia su interior, y la variable '@selection' es la variable que recibe el valor y que es accesible por cada uno de los metodos de la clase.
+
+  class SteweyToy
+    def initialize(selection)
+      @selection = selection
+      @Animal = {
+        :monkey   => 'The monkey says "Makaaaaaak"', 
+        :cow      => 'The cow says "Shazoooooo!"', 
+        :pig      => 'The pig says "Oink!!"', 
+        :rooster  => 'The rooster says "Kikirikiiiii!!!!"' 
+      }
+    end
+    def Jam
+      puts @Animal[@selection]
+    end
+  end
+
+Las variables precedidas por un '@' son variables accesibles por toda la clase.
+
 ==== a) Objetos y atributos
+
+
 
 ==== b) Clases y su comunicación con otras clases
 
@@ -323,7 +374,7 @@ El iterador 'loop' es un ciclo que se ejecuta infinitamente hasta que tu como us
 
 ==== b) Hashes
 
-==== c) Bloques e iteradores
+==== c) Bloques
 
 ==== d) Contenedores
 

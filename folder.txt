@@ -1,0 +1,7 @@
+folder.txt
+gets.rb
+img
+pt.rb
+README.rdoc
+TEMARIO_RUBY.asciidoc
+TEMARIO_RUBY.html
